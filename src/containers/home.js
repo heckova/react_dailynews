@@ -8,10 +8,14 @@ import LatestNews from "../components/home/latest";
 
 class Home extends Component {
 
+    componentDidMount() {
+        this.props.latestNews();
+    }
+
     render() {
         return (
             <div>
-                <LatestNews/>
+                <LatestNews latest={this.props.articles.latest}/>
             </div>
         )
     }
@@ -24,7 +28,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({latestNews},dispatch)
+    return bindActionCreators({latestNews}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
