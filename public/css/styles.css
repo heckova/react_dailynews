@@ -29,7 +29,7 @@ footer {
 
 .home-latest {
     box-sizing: border-box;
-    padding: 0px;
+    padding: 0;
 }
 
 .home-latest .item .image_cover {
@@ -40,7 +40,7 @@ footer {
 
 .home-latest .item .description {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
 }
 
 .home-latest .item .description span {
@@ -55,7 +55,7 @@ footer {
 .home-latest .item .description div {
     padding: 10px;
     font-size: 15px;
-    font-family: Roboto;
+    font-family: Roboto, cursive;
     font-weight: 700;
     color: #fff;
     background: rgba(55, 55, 55, 0.51);
