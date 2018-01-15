@@ -5,6 +5,7 @@ import Header from "./header";
 import Footer from "./footer";
 //CONTAINERS
 import Home from "../containers/home";
+import News from "../containers/news";
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
                     <Header/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route path="/news/:id" component={News}/>
                     </Switch>
                     <Footer/>
                 </div>
