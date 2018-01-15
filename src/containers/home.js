@@ -1,17 +1,19 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {latestNews, otherNews} from "../actions";
+import {latestNews, otherNews, latestGallery} from "../actions";
 import {bindActionCreators} from "redux";
 
 //COMPONENTS
 import LatestNews from "../components/home/latest";
 import OtherNews from "../components/home/otherNews";
+import Gallery from "../components/home/gallery";
 
 class Home extends Component {
 
     componentDidMount() {
         this.props.latestNews();
         this.props.otherNews();
+        this.props.latestGallery();
     }
 
     render() {
@@ -19,6 +21,7 @@ class Home extends Component {
             <div>
                 <LatestNews latest={this.props.articles.latest}/>
                 <OtherNews otherNews={this.props.articles.other}/>
+                <Gallery latestGallery={this.props.gallery.latestGallery}/>
             </div>
         )
     }
@@ -26,12 +29,13 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        articles: state.articles
+        articles: state.articles,
+        gallery: state.gallery
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({latestNews, otherNews}, dispatch)
+    return bindActionCreators({latestNews, otherNews, latestGallery}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
