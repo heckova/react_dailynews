@@ -5,6 +5,40 @@ import {bindActionCreators} from "redux";
 
 class News extends Component {
 
+    renderNews = ({selected}) => {
+        if (selected) {
+            return selected.map((item) => {
+                return (
+                    <div key={item.id}>
+                        <div className="tags">
+                                <span>
+                                    <i className="fa fa-eye" aria-hidden="true"/> {item.views}
+                                </span>
+                            <span>
+                                <i className="fa fa-thumbs-up" aria-hidden="true"/>
+                                {item.likes[0]}
+                            </span>
+                            <span>
+                                <i className="fa fa-thumbs-down" aria-hidden="true"/> {item.likes[1]}
+                            </span>
+                        </div>
+                        <div className="top">
+                            <h2>{item.title}</h2>
+                            <span>Article by: <strong>{item.author}</strong></span>
+                        </div>
+                        <img alt={item.title} src={`/images/articles/${item.img}`}/>
+                        <div className="body_news">
+                            {item.body}
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                )
+            })
+        }
+    };
+
     componentDidMount() {
         this.props.selectedNews(this.props.match.params.id);
     };
@@ -15,7 +49,9 @@ class News extends Component {
 
     render() {
         return (
-            <div>Article</div>
+            <div className={"news_container"}>
+                {this.renderNews(this.props.articles)}
+            </div>
         )
     }
 }
