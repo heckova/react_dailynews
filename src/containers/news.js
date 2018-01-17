@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import {selectedNews, clearSelectedNews} from "../actions";
 import {bindActionCreators} from "redux";
 
+import LikesCounter from "./likesCounter";
+
 class News extends Component {
 
     renderNews = ({selected}) => {
@@ -31,7 +33,13 @@ class News extends Component {
                             {item.body}
                         </div>
                         <div>
-
+                            <LikesCounter
+                                articleId={item.id}
+                                type="HANDLE_LIKES_ARTICLE"
+                                section="articles"
+                                likes={item.likes[0]}
+                                dislikes={item.likes[1]}
+                            />
                         </div>
                     </div>
                 )
